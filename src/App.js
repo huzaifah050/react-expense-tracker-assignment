@@ -47,7 +47,7 @@ export default class App extends Component {
   render() {
     const items = this.state.items.map((item, index) => {
       return (
-        <div key={index}>
+        <div className="output" key={index}>
           <h4>{item.item}</h4>
           <small>{item.time}</small>
           <small>{item.date}</small>
@@ -57,51 +57,61 @@ export default class App extends Component {
     });
 
     return (
-      <div className="App">
-        {/* <Clock date={new Date()} /> */}
-        <h1>ADD NEW ITEM</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Item:
-            <input
-              type="text"
-              name="item"
-              value={this.state.item}
-              onChange={this.handleChange}
-            />
-          </label>
+      <div>
+        <h1 className="App-header">EXPENSE TRACKER</h1>
+        <div className="container">
+          <div className="form-container">
+            <h2>ADD NEW ITEM</h2>
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-row">
+                <label>Item:</label>
+                <input
+                  type="text"
+                  name="item"
+                  value={this.state.item}
+                  onChange={this.handleChange}
+                />
+              </div>
 
-          <label>
-            Item Description:
-            <textarea
-              onChange={this.handleChange}
-              value={this.state.itemDescription}
-            />
-          </label>
+              <div className="form-row">
+                <label>Item Description:</label>
+                <textarea
+                  name="itemDescription"
+                  onChange={this.handleChange}
+                  value={this.state.itemDescription}
+                />
+              </div>
 
-          <label>
-            Time purchased:
-            <input
-              type="time"
-              name="time"
-              onChange={this.handleChange}
-              value={this.state.time}
-            />
-          </label>
+              <div className="form-row">
+                <label>Time purchased:</label>
+                <input
+                  type="time"
+                  name="time"
+                  onChange={this.handleChange}
+                  value={this.state.time}
+                />
+              </div>
 
-          <label>
-            Date purchased:
-            <input
-              type="date"
-              name="date"
-              onChange={this.handleChange}
-              value={this.state.date}
-            />
-          </label>
-          <button type="submit">Add Item</button>
-        </form>
-
-        <div>{items}</div>
+              <div className="form-row">
+                <label>Date purchased:</label>
+                <input
+                  type="date"
+                  name="date"
+                  onChange={this.handleChange}
+                  value={this.state.date}
+                />
+              </div>
+              <div>
+                <button className="btn" type="submit">
+                  Add Item
+                </button>
+              </div>
+            </form>
+          </div>
+          <div className="output-container">
+            <div>{items}</div>
+          </div>
+        </div>
       </div>
     );
   }
