@@ -7,8 +7,9 @@ export default class App extends Component {
     this.state = {
       items: [
         {
-          item: "phone",
+          item: "Phone",
           itemDescription: "Samsung Phone",
+          currency: "4",
           time: "3:00pm",
           date: "12/09/2020"
           // time: this.props.date.toLocaleTimeString()
@@ -16,6 +17,7 @@ export default class App extends Component {
       ],
       item: "",
       itemDescription: "",
+      currency: "",
       time: "",
       date: ""
     };
@@ -26,6 +28,7 @@ export default class App extends Component {
     const newItem = {
       item: this.state.item,
       itemDescription: this.state.itemDescription,
+      currency: this.state.currency,
       time: this.state.time,
       date: this.state.date
     };
@@ -33,6 +36,7 @@ export default class App extends Component {
       items: [...this.state.items, newItem],
       item: "",
       itemDescription: "",
+      currency: "",
       time: "",
       date: ""
     });
@@ -44,14 +48,28 @@ export default class App extends Component {
     });
   };
 
+  //CURRENCY
+
   render() {
     const items = this.state.items.map((item, index) => {
       return (
         <div className="output" key={index}>
-          <h4>{item.item}</h4>
-          <small>{item.time}</small>
-          <small>{item.date}</small>
-          <p>{item.itemDescription}</p>
+          <div className="items-content">
+            <div>
+              <h4 className="item">{item.item}</h4>
+            </div>
+
+            <div className="item-details">
+              <small className="time">{item.time}</small>
+              <small className="date">{item.date}</small>
+            </div>
+          </div>
+          <h5>
+            {" "}
+            <span>&#8373;</span> {item.currency}
+          </h5>
+
+          <p className='discription'>{item.itemDescription}</p>
         </div>
       );
     });
@@ -61,8 +79,10 @@ export default class App extends Component {
         <h1 className="App-header">EXPENSE TRACKER</h1>
         <div className="container">
           <div className="form-container">
-            <h2>ADD NEW ITEM</h2>
-            <form onSubmit={this.handleSubmit}>
+            <div className="header">
+              <h2>Add New Item</h2>
+            </div>
+            <form onSubmit={this.handleSubmit} className="form">
               <div className="form-row">
                 <label>Item:</label>
                 <input
@@ -80,6 +100,18 @@ export default class App extends Component {
                   onChange={this.handleChange}
                   value={this.state.itemDescription}
                 />
+              </div>
+
+              <div className="form-row">
+                <label>Amount spent:</label>
+                <span className="GHS">
+                  <input
+                    type="number"
+                    name="currency"
+                    value={this.state.currency}
+                    onChange={this.handleChange}
+                  />
+                </span>
               </div>
 
               <div className="form-row">
@@ -109,7 +141,7 @@ export default class App extends Component {
             </form>
           </div>
           <div className="output-container">
-            <div>{items}</div>
+            <div className="output-items">{items}</div>
           </div>
         </div>
       </div>

@@ -5,12 +5,13 @@
 }
 
 body {
-  background-color: #f3f3f3;
+  background-color: fff;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .App-header {
-  background-color: aqua;
+  background-color: #333;
+  color: #f0f0f0;
   text-align: center;
   min-height: 40px;
   padding: 10px;
@@ -24,35 +25,111 @@ body {
 }
 
 .form-container {
-  background-color: darkgoldenrod;
+  background-color: #f3f3f3;
+  color: #333;
   /* flex: 1; */
-  height: 70vh;
+  height: 87vh;
   flex-basis: 30%;
   padding: 10px;
-  text-align: center;
+  /* text-align: center; */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgb(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.output-container {
-  background-color: darkcyan;
-  /* flex: 2; */
-  flex-basis: 60%;
-  padding: 10px;
-  text-align: center;
+.header {
+  border-bottom: 1px solid rgb(218, 218, 218);
+  padding: 5px 0px;
+  color: #333;
+}
+
+/* .header h2 {
+  margin: 0;
+} */
+
+.form {
+  padding: 10px 40px;
 }
 
 .form-row {
-  padding: 10px 0;
-  display: flex;
-}
-
-.form-row input {
-  flex: 1;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
 }
 
 .form-row label {
-  flex: 0.5;
+  display: inline-block;
+  margin-bottom: 3px;
 }
+
+.form-row input,
+textarea {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  font-size: 14px;
+  padding: 5px;
+  width: 100%;
+  font-family: inherit;
+}
+
+.output-container {
+  background-color: whitesmoke;
+  color: #333;
+  flex-basis: 60%;
+  text-align: left;
+}
+
+.date,
+.time {
+  color: rgb(124, 121, 121);
+  margin-right: 10px;
+}
+
+.item {
+  padding: 7px 0;
+  font-size: 20px;
+}
+
+.items-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-details {
+  margin-top: 13px;
+}
+
+.discription {
+  color: rgb(122, 120, 120);
+}
+
 .output {
-  border-bottom: 2px solid black;
-  margin-bottom: 10px;
+  border-bottom: 0.5px solid rgb(180, 176, 176);
+  padding: 10px 20px;
+}
+
+/* span.GHS {
+  float: left;
+  text-align: left;
+} */
+
+/* span.GHS::before {
+  float: left;
+  content: "\20B5"; 
+  padding: 3px 4px 3px 3px;
+}  */
+
+.btn {
+  background-color: #333;
+  color: #f0f0f0;
+  border: 2px solid #333;
+  border-radius: 4px;
+  font-weight: 600;
+  display: block;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  outline: none;
 }
