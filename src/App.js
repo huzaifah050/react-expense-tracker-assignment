@@ -1,5 +1,5 @@
-import "./App.css";
-import React, { Component } from "react";
+import './App.css';
+import React, { Component } from 'react';
 
 export default class App extends Component {
   constructor(props) {
@@ -7,19 +7,19 @@ export default class App extends Component {
     this.state = {
       items: [
         {
-          item: "Phone",
-          itemDescription: "Samsung Phone",
-          currency: "4",
-          time: "3:00pm",
-          date: "12/09/2020"
+          item: 'Phone',
+          itemDescription: 'Samsung Phone',
+          currency: '4',
+          time: '3:00pm',
+          date: '12/09/2020'
           // time: this.props.date.toLocaleTimeString()
         }
       ],
-      item: "",
-      itemDescription: "",
-      currency: "",
-      time: "",
-      date: ""
+      item: '',
+      itemDescription: '',
+      currency: '',
+      time: '',
+      date: ''
     };
   }
 
@@ -34,11 +34,11 @@ export default class App extends Component {
     };
     this.setState({
       items: [...this.state.items, newItem],
-      item: "",
-      itemDescription: "",
-      currency: "",
-      time: "",
-      date: ""
+      item: '',
+      itemDescription: '',
+      currency: '',
+      time: '',
+      date: ''
     });
   };
 
@@ -52,26 +52,30 @@ export default class App extends Component {
 
   render() {
     const items = this.state.items.map((item, index) => {
-      return (
-        <div className="output" key={index}>
-          <div className="items-content">
-            <div>
-              <h4 className="item">{item.item}</h4>
-            </div>
+      if (item.currency !== '' && item.currency > 0 && item.item !== '') {
+        return (
+          <div className="output" key={index}>
+            <div className="items-content">
+              <div>
+                <h4 className="item">{item.item}</h4>
+              </div>
 
-            <div className="item-details">
-              <small className="time">{item.time}</small>
-              <small className="date">{item.date}</small>
+              <div className="item-details">
+                <small className="time">{item.time}</small>
+                <small className="date">{item.date}</small>
+              </div>
             </div>
+            <h5>
+              {' '}
+              <span>&#8373;</span> {item.currency}
+            </h5>
+
+            <p className="discription">{item.itemDescription}</p>
           </div>
-          <h5>
-            {" "}
-            <span>&#8373;</span> {item.currency}
-          </h5>
-
-          <p className='discription'>{item.itemDescription}</p>
-        </div>
-      );
+        );
+      } else {
+        return null;
+      }
     });
 
     return (
