@@ -1,6 +1,7 @@
 import React from 'react';
 
 const DisplayExpense = ({ items }) => {
+  
   console.log(items);
   const item = items.map((item, index) => {
     if (item.currency !== '' && item.currency > 0 && item.item !== '') {

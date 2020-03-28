@@ -1,30 +1,12 @@
 import './App.css';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Form from './components/Form';
 import DisplayExpense from './components/DisplayExpense';
-
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [
-        {
-          item: 'Phone',
-          itemDescription: 'Samsung Phone',
-          currency: '4',
-          time: '3:00pm',
-          date: '12/09/2020'
-          // time: this.props.date.toLocaleTimeString()
-        }
-      ]
-    };
-  }
-
+import { addItems} from '../src/store/ actions'
+class App extends Component {
   addExpense = newItem => {
-    let items = [...this.state.items, newItem];
-    this.setState({
-      items
-    });
+   this.props.addExpense(newItem)
   };
 
   //CURRENCY
@@ -33,8 +15,20 @@ export default class App extends Component {
     return (
       <div>
         <Form addExpense={this.addExpense} />
-        <DisplayExpense items={this.state.items} />
+        <DisplayExpense items={this.props.items} />
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    items: state.items
+  };
+};
+
+const mapDispatchToProps = {
+  addExpense: addItems
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
